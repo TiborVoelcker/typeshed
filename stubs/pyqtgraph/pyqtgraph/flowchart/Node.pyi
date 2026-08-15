@@ -1,7 +1,7 @@
 from _typeshed import Incomplete
 
 from ..graphicsItems.GraphicsObject import GraphicsObject
-from ..Qt import QtCore, QtWidgets
+from ..Qt import QtCore, QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["Node", "NodeGraphicsItem"]
 

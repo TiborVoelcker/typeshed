@@ -2,7 +2,7 @@ from _typeshed import Incomplete
 
 import numpy as np
 
-from ...Qt import QtWidgets
+from ...Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 from ..Parameter import Parameter
 from .basetypes import WidgetParameterItem
 

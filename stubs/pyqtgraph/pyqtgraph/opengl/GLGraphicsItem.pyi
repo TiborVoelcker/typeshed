@@ -2,7 +2,7 @@ from _typeshed import Incomplete
 
 from OpenGL.GL import *
 
-from ..Qt import QtCore
+from ..Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 GLOptions: Incomplete
 

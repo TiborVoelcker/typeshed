@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from ..Qt import QtWidgets
+from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class StackWidget(QtWidgets.QTreeWidget):
     def __init__(self, parent=None) -> None: ...

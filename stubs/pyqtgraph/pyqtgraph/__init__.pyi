@@ -45,7 +45,10 @@ from .GraphicsScene import GraphicsScene as GraphicsScene
 from .imageview import *
 from .metaarray import MetaArray as MetaArray
 from .Point import Point as Point
-from .Qt import QtCore as QtCore, isQObjectAlive as isQObjectAlive
+from .Qt import (  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+    QtCore as QtCore,
+    isQObjectAlive as isQObjectAlive,
+)
 from .SignalProxy import *
 from .SRTTransform import SRTTransform as SRTTransform
 from .SRTTransform3D import SRTTransform3D as SRTTransform3D

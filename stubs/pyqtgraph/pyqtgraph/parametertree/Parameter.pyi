@@ -1,7 +1,7 @@
 import types
 from _typeshed import Incomplete
 
-from ..Qt import QtCore
+from ..Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 PARAM_TYPES: Incomplete
 PARAM_NAMES: Incomplete

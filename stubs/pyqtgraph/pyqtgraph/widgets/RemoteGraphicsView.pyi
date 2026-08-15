@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from ..Qt import QtCore, QtGui, QtWidgets
+from ..Qt import QtCore, QtGui, QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 from .GraphicsView import GraphicsView
 
 __all__ = ["RemoteGraphicsView"]

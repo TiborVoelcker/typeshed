@@ -1,7 +1,7 @@
 from _typeshed import Incomplete
 
 from ..graphicsItems.ROI import ROI
-from ..Qt import QtWidgets
+from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["Canvas"]
 

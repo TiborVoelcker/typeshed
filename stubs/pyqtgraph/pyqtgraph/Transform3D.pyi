@@ -1,4 +1,4 @@
-from .Qt import QtGui
+from .Qt import QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class Transform3D(QtGui.QMatrix4x4):
     def __init__(self, *args) -> None: ...

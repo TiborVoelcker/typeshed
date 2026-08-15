@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from .Qt import QtGui
+from .Qt import QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 __all__ = [
     "siScale",

@@ -2,7 +2,7 @@ import contextlib
 from _typeshed import Incomplete
 from collections.abc import Generator
 
-from .Qt import QT_LIB as QT_LIB
+from .Qt import QT_LIB as QT_LIB  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 @contextlib.contextmanager
 def open_maybe_console(filename=None) -> Generator[Incomplete]: ...

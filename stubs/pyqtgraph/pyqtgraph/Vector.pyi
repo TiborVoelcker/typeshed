@@ -1,4 +1,4 @@
-from .Qt import QT_LIB as QT_LIB, QtGui
+from .Qt import QT_LIB as QT_LIB, QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class Vector(QtGui.QVector3D):
     def __init__(self, *args) -> None: ...

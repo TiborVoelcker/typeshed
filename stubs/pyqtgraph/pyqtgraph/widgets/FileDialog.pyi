@@ -1,4 +1,4 @@
-from ..Qt import QtWidgets
+from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["FileDialog"]
 

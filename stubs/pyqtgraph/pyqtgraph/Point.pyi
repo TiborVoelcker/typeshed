@@ -1,4 +1,4 @@
-from .Qt import QtCore
+from .Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class Point(QtCore.QPointF):
     def __init__(self, *args) -> None: ...

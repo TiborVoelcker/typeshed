@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from ...Qt import QtCore
+from ...Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 from ..Parameter import Parameter
 from ..ParameterItem import ParameterItem
 

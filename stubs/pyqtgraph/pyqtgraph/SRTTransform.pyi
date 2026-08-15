@@ -1,4 +1,4 @@
-from .Qt import QtGui
+from .Qt import QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class SRTTransform(QtGui.QTransform):
     def __init__(self, init=None) -> None: ...

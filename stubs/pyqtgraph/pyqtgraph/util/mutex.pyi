@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from ..Qt import QtCore
+from ..Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class Mutex(QtCore.QMutex):
     l: Incomplete

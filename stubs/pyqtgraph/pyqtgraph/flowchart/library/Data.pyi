@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from ...Qt import QtWidgets
+from ...Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 from ..Node import Node
 from .common import CtrlNode
 

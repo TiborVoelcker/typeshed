@@ -1,2 +1,13 @@
 version = "0.13.*"
 upstream_repository = "https://github.com/pyqtgraph/pyqtgraph"
+# Requires a version of numpy with a `py.typed` file
+requires = ["numpy>=1.22"]
+# `pyqtgraph.Qt` ships its own inline stubs, and the non-public API
+# (examples, generated Qt Designer templates, vendored colorama, ...)
+# is deliberately left unstubbed.
+partial_stub = true
+
+[tool.stubtest]
+ignore_missing_stub = true
+# pyqtgraph needs one of PyQt5/PyQt6/PySide2/PySide6 to be importable.
+stubtest_requirements = ["PyQt6"]
