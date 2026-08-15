@@ -3,7 +3,11 @@
 
 from _typeshed import Incomplete
 
-from ..Qt import QtCore, QtGui, QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from ..Qt import (  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+    QtCore,
+    QtGui,
+    QtWidgets,
+)
 from .GraphicsView import GraphicsView
 
 __all__ = ["RemoteGraphicsView"]

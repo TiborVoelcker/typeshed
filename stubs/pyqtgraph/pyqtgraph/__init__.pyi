@@ -45,7 +45,7 @@ from .GraphicsScene import GraphicsScene as GraphicsScene
 from .imageview import *
 from .metaarray import MetaArray as MetaArray
 from .Point import Point as Point
-from .Qt import (  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from .Qt import (  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
     QtCore as QtCore,
     isQObjectAlive as isQObjectAlive,
 )

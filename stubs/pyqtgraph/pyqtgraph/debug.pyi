@@ -3,7 +3,7 @@ from _typeshed import Incomplete
 from collections.abc import Callable, Generator
 from typing import Any, TypeVar
 
-from .Qt import QT_LIB as QT_LIB  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from .Qt import QT_LIB as QT_LIB  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 _F = TypeVar("_F", bound=Callable[..., Any])
 

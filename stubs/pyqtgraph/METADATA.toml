@@ -9,5 +9,8 @@ partial_stub = true
 
 [tool.stubtest]
 ignore_missing_stub = true
-# pyqtgraph needs one of PyQt5/PyQt6/PySide2/PySide6 to be importable.
-stubtest_requirements = ["PyQt6"]
+# pyqtgraph needs one of PyQt5/PyQt6/PySide2/PySide6 to be importable. The rest
+# are optional dependencies, without which whole modules fail to import:
+# PyOpenGL for `pyqtgraph.opengl`, matplotlib for the matplotlib exporter and
+# widget, and jupyter_rfb for `pyqtgraph.jupyter`.
+stubtest_requirements = ["PyQt6", "PyOpenGL", "matplotlib", "jupyter_rfb"]

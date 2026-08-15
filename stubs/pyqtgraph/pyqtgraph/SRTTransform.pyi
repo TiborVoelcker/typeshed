@@ -1,7 +1,7 @@
 # Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
 # pyright: reportUntypedBaseClass=false
 
-from .Qt import QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from .Qt import QtGui  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 class SRTTransform(QtGui.QTransform):
     def __init__(self, init=None) -> None: ...

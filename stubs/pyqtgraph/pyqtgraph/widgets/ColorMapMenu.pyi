@@ -4,7 +4,7 @@
 from _typeshed import Incomplete
 from typing import NamedTuple
 
-from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from ..Qt import QtWidgets  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["ColorMapMenu"]
 

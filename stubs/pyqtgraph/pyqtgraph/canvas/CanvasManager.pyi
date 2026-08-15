@@ -3,7 +3,7 @@
 
 from _typeshed import Incomplete
 
-from ..Qt import QtCore, QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from ..Qt import QtCore, QtWidgets  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 class CanvasManager(QtCore.QObject):
     SINGLETON: Incomplete

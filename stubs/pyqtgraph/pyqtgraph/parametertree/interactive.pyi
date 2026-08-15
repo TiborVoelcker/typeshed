@@ -52,7 +52,20 @@ class Interactor:
         existOk=...,
         **overrides,
     ): ...
-    def __call__(self, function, **kwargs): ...
+    # `__call__` is `functools.wraps(interact)`-ed, so it has the same signature.
+    def __call__(
+        self,
+        function,
+        *,
+        ignores=None,
+        runOptions=...,
+        parent=...,
+        titleFormat=...,
+        nest=...,
+        runActionTemplate=...,
+        existOk=...,
+        **overrides,
+    ): ...
     def decorate(self, **kwargs): ...
     def resolveAndHookupParameterChild(self, functionGroup, childOpts, interactiveFunction): ...
     def functionToParameterDict(self, function, **overrides): ...

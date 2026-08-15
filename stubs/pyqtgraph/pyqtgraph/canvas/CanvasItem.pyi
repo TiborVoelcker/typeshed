@@ -4,7 +4,7 @@
 from _typeshed import Incomplete
 
 from ..graphicsItems.ROI import ROI
-from ..Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+from ..Qt import QtCore  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["CanvasItem", "GroupCanvasItem"]
 

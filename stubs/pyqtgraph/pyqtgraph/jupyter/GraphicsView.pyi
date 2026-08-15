@@ -3,7 +3,7 @@
 
 from _typeshed import Incomplete
 
-import jupyter_rfb  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+import jupyter_rfb  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["GraphicsLayoutWidget", "PlotWidget"]
 
