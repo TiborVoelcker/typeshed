@@ -522,10 +522,13 @@ pyqtgraph.widgets.PlotWidget.PlotWidget.setYRange
 pyqtgraph.widgets.PlotWidget.PlotWidget.unregister
 
 # Instance attributes that shadow a Qt method of the same name on the class:
-# `AxisItem.scale` is `QGraphicsItem.scale`, `LegendItem.size` is
-# `QGraphicsWidget.size`, `ScatterPlotItem.data` is `QGraphicsItem.data`, and
-# each is assigned a value in `__init__`.
+# `AxisItem.scale` is `QGraphicsItem.scale`, `AxisItem.style` is
+# `QGraphicsWidget.style`, `LegendItem.size` is `QGraphicsWidget.size`,
+# `ScatterPlotItem.data` is `QGraphicsItem.data`, and each is assigned a value
+# in `__init__`.
 pyqtgraph.AxisItem.scale
+pyqtgraph.AxisItem.style
+pyqtgraph.graphicsItems.AxisItem.AxisItem.style
 pyqtgraph.graphicsItems.AxisItem.AxisItem.scale
 pyqtgraph.LegendItem.size
 pyqtgraph.graphicsItems.LegendItem.LegendItem.size
