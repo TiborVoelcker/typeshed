@@ -1,4 +1,6 @@
-from _typeshed import Incomplete
+from _typeshed import Incomplete, StrPath
+from typing import Literal, NoReturn
+from typing_extensions import TypeAlias
 
 from .colormap import *
 from .functions import *
@@ -90,28 +92,49 @@ from .widgets.VerticalLabel import *
 
 __version__: str
 useOpenGL: bool
-CONFIG_OPTIONS: Incomplete
 
-def setConfigOption(opt, value) -> None: ...
-def setConfigOptions(**opts) -> None: ...
-def getConfigOption(opt): ...
+# The keys accepted by `setConfigOption`/`getConfigOption`; see
+# https://pyqtgraph.readthedocs.io/en/latest/api_reference/config_options.html
+_ConfigOption: TypeAlias = Literal[
+    "useOpenGL",
+    "leftButtonPan",
+    "foreground",
+    "background",
+    "antialias",
+    "editorCommand",
+    "exitCleanup",
+    "enableExperimental",
+    "crashWarning",
+    "mouseRateLimit",
+    "imageAxisOrder",
+    "useCupy",
+    "useNumba",
+    "segmentedLineMode",
+]
+
+CONFIG_OPTIONS: dict[str, Incomplete]
+
+def setConfigOption(opt: _ConfigOption, value: object) -> None: ...
+def setConfigOptions(**opts: object) -> None: ...
+def getConfigOption(opt: _ConfigOption): ...
 def systemInfo() -> None: ...
-def renamePyc(startDir) -> None: ...
+def renamePyc(startDir: StrPath) -> None: ...  # undocumented
 
-path: Incomplete
+path: str  # undocumented
 
-def cleanup() -> None: ...
-def exit() -> None: ...
+def cleanup() -> None: ...  # undocumented
+def exit() -> NoReturn: ...
 
-plots: Incomplete
-images: Incomplete
-QAPP: Incomplete
+plots: list[PlotWidget]  # undocumented
+images: list[ImageView]  # undocumented
+consoles: list[Incomplete]  # undocumented
+QAPP: Incomplete  # undocumented
 
-def plot(*args, **kargs): ...
-def image(*args, **kargs): ...
+def plot(*args, **kargs) -> PlotWidget: ...
+def image(*args, **kargs) -> ImageView: ...
 
 show = image
 
 def dbg(*args, **kwds): ...
 def stack(*args, **kwds): ...
-def setPalette(app, style) -> None: ...
+def setPalette(app, style: str | Incomplete) -> None: ...  # undocumented

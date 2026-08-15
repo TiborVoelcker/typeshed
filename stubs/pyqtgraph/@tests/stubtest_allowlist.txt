@@ -534,3 +534,7 @@ pyqtgraph.widgets.ComboBox.ComboBox.clear
 # `ObjectProxy` forwards every dunder to the remote object through a generated
 # `(*args)` wrapper.
 pyqtgraph.multiprocess.remoteproxy.ObjectProxy.__str__
+
+# Created lazily by `pyqtgraph.dbg()` / `pyqtgraph.stack()`, which do
+# `global consoles` inside an `except NameError` branch.
+pyqtgraph.consoles
