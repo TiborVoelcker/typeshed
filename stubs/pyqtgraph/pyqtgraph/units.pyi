@@ -1,14 +1,14 @@
-from _typeshed import Incomplete
+SI_PREFIXES: str
+UNITS: list[str]
+allUnits: dict[str, float]
 
-SI_PREFIXES: Incomplete
-UNITS: Incomplete
-allUnits: Incomplete
+def addUnit(prefix: str, val: float) -> None: ...
 
-def addUnit(prefix, val) -> None: ...
+# `addUnit` injects one module-level float per prefix/unit combination
+# (`mV`, `kHz`, `pA`, ...); see `allUnits` for the full set.
+def __getattr__(name: str) -> float: ...
 
-v: Incomplete
-pre: str
-
-def evalUnits(unitStr) -> None: ...
+# These three are declared but unimplemented upstream; they all return None.
+def evalUnits(unitStr: str) -> None: ...
 def formatUnits(units) -> None: ...
 def simplify(units) -> None: ...
