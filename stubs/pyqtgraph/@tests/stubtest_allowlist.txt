@@ -521,10 +521,16 @@ pyqtgraph.widgets.PlotWidget.PlotWidget.setYLink
 pyqtgraph.widgets.PlotWidget.PlotWidget.setYRange
 pyqtgraph.widgets.PlotWidget.PlotWidget.unregister
 
-# `AxisItem.scale` is `QGraphicsItem.scale` on the class and a float on the
-# instance (assigned in `AxisItem.__init__`).
+# Instance attributes that shadow a Qt method of the same name on the class:
+# `AxisItem.scale` is `QGraphicsItem.scale`, `LegendItem.size` is
+# `QGraphicsWidget.size`, `ScatterPlotItem.data` is `QGraphicsItem.data`, and
+# each is assigned a value in `__init__`.
 pyqtgraph.AxisItem.scale
 pyqtgraph.graphicsItems.AxisItem.AxisItem.scale
+pyqtgraph.LegendItem.size
+pyqtgraph.graphicsItems.LegendItem.LegendItem.size
+pyqtgraph.ScatterPlotItem.data
+pyqtgraph.graphicsItems.ScatterPlotItem.ScatterPlotItem.data
 
 # Wrapped by the private `ComboBox.ignoreIndexChange` decorator, which passes
 # through `(*args, **kwds)`. The stub records the real signature instead.
