@@ -6,4 +6,4 @@ class ProgressBarParameterItem(WidgetParameterItem):
     def makeWidget(self): ...
 
 class ProgressBarParameter(Parameter):
-    itemClass = ProgressBarParameterItem
+    itemClass: type[ProgressBarParameterItem]

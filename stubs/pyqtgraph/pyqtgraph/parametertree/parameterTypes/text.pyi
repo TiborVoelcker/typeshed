@@ -10,4 +10,4 @@ class TextParameterItem(WidgetParameterItem):
     def makeWidget(self): ...
 
 class TextParameter(Parameter):
-    itemClass = TextParameterItem
+    itemClass: type[TextParameterItem]

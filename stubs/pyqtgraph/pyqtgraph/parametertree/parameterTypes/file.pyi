@@ -14,5 +14,5 @@ class FileParameterItem(StrParameterItem):
     def updateDisplayLabel(self, value=None): ...
 
 class FileParameter(Parameter):
-    itemClass = FileParameterItem
+    itemClass: type[FileParameterItem]
     def __init__(self, **opts) -> None: ...

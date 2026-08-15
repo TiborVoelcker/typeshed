@@ -1,3 +1,6 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from _typeshed import Incomplete
 
 from ...Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
@@ -57,7 +60,7 @@ class GroupParameterItem(ParameterItem):
     def updateAddList(self) -> None: ...
 
 class GroupParameter(Parameter):
-    itemClass = GroupParameterItem
+    itemClass: type[GroupParameterItem]
     sigAddNew: Incomplete
     def addNew(self, typ=None) -> None: ...
     def setAddList(self, vals) -> None: ...

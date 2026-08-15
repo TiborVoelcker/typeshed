@@ -1,13 +1,16 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from _typeshed import Incomplete
 
-from OpenGL.GL import *
+from OpenGL.GL import *  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 from ..Qt import QtCore  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 GLOptions: Incomplete
 
 class GLGraphicsItem(QtCore.QObject):
-    def __init__(self, parentItem: GLGraphicsItem = None) -> None: ...
+    def __init__(self, parentItem: GLGraphicsItem | None = None) -> None: ...
     def setParentItem(self, item) -> None: ...
     def setGLOptions(self, opts) -> None: ...
     def updateGLOptions(self, opts) -> None: ...

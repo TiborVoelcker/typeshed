@@ -1,6 +1,9 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from _typeshed import Incomplete
 
-from OpenGL.GL import *
+from OpenGL.GL import *  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
@@ -14,7 +17,7 @@ class RawImageWidget(QtWidgets.QWidget):
     def setImage(self, img, *args, **kargs) -> None: ...
     def paintEvent(self, ev) -> None: ...
 
-class RawImageGLWidget(QOpenGLWidget):
+class RawImageGLWidget(QtWidgets.QOpenGLWidget):
     scaled: Incomplete
     image: Incomplete
     uploaded: bool

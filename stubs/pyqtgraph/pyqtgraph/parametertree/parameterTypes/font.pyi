@@ -7,5 +7,5 @@ class FontParameterItem(WidgetParameterItem):
     def updateDisplayLabel(self, value=None) -> None: ...
 
 class FontParameter(Parameter):
-    itemClass = FontParameterItem
+    itemClass: type[FontParameterItem]
     def saveState(self, filter=None): ...

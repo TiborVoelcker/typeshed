@@ -1,3 +1,6 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from .Qt import QT_LIB as QT_LIB, QtGui  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 class Vector(QtGui.QVector3D):

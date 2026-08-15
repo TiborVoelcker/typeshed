@@ -12,7 +12,7 @@ class BinOpNode(CtrlNode):
     uiTemplate: Incomplete
     fn: Incomplete
     def __init__(self, name, fn) -> None: ...
-    def process(self, **args): ...
+    def process(self, **args): ...  # type: ignore[override]
 
 class AbsNode(UniOpNode):
     nodeName: str

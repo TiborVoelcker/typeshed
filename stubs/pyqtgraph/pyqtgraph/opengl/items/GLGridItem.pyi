@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from OpenGL.GL import *
+from OpenGL.GL import *  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 from ..GLGraphicsItem import GLGraphicsItem
 

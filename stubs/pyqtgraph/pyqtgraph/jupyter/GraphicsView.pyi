@@ -1,6 +1,9 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from _typeshed import Incomplete
 
-import jupyter_rfb
+import jupyter_rfb  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
 
 __all__ = ["GraphicsLayoutWidget", "PlotWidget"]
 

@@ -1,3 +1,6 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 from _typeshed import Incomplete
 
 from ..Qt import QtWidgets  # type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
@@ -11,7 +14,7 @@ class MatplotlibExporter(Exporter):
     def __init__(self, item) -> None: ...
     def parameters(self) -> None: ...
     def cleanAxes(self, axl) -> None: ...
-    def export(self, fileName=None) -> None: ...
+    def export(self, fileName=None) -> None: ...  # type: ignore[override]
 
 class MatplotlibWindow(QtWidgets.QMainWindow):
     mpl: Incomplete

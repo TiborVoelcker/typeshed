@@ -14,7 +14,7 @@ class ListParameterItem(WidgetParameterItem):
     def updateDisplayLabel(self, value=None) -> None: ...
 
 class ListParameter(Parameter):
-    itemClass = ListParameterItem
+    itemClass: type[ListParameterItem]
     forward: Incomplete
     reverse: Incomplete
     def __init__(self, **opts) -> None: ...

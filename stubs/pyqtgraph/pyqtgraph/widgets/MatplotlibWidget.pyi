@@ -1,3 +1,6 @@
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
+
 import typing
 from _typeshed import Incomplete
 

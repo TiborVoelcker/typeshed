@@ -22,4 +22,4 @@ class SliderParameterItem(WidgetParameterItem):
     def limitsChanged(self, param, limits) -> None: ...
 
 class SliderParameter(Parameter):
-    itemClass = SliderParameterItem
+    itemClass: type[SliderParameterItem]

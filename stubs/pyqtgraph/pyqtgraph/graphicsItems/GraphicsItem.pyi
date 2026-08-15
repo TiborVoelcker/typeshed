@@ -4,7 +4,7 @@ from xml.etree.ElementTree import Element
 
 __all__ = ["GraphicsItem"]
 
-class LRU(OrderedDict):
+class LRU(OrderedDict[Incomplete, Incomplete]):
     maxsize: Incomplete
     def __init__(self, maxsize: int = 128, *args, **kwds) -> None: ...
     def __getitem__(self, key): ...

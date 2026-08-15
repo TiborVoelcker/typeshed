@@ -1,3 +1,5 @@
+from pyqtgraph.parametertree import parameterTypes
+
 from .interactive import (
     InteractiveFunction as InteractiveFunction,
     Interactor as Interactor,
@@ -12,3 +14,5 @@ from .Parameter import (
 from .ParameterItem import ParameterItem as ParameterItem
 from .ParameterSystem import ParameterSystem as ParameterSystem, SystemSolver as SystemSolver
 from .ParameterTree import ParameterTree as ParameterTree
+
+types = parameterTypes

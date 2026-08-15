@@ -18,11 +18,11 @@ class PenParameterItem(GroupParameterItem):
 def cap_first(s: str): ...
 
 class PenParameter(GroupParameter):
-    itemClass = PenParameterItem
+    itemClass: type[PenParameterItem]
     pen: Incomplete
     valChangingProxy: Incomplete
     def __init__(self, **opts) -> None: ...
-    def setDefault(self, val, **kwargs): ...
+    def setDefault(self, val, **kwargs): ...  # type: ignore[override]
     def saveState(self, filter=None): ...
     def restoreState(
         self, state, recursive: bool = True, addChildren: bool = True, removeChildren: bool = True, blockSignals: bool = True

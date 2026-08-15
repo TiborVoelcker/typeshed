@@ -6,4 +6,4 @@ class ColorMapParameterItem(WidgetParameterItem):
     def makeWidget(self): ...
 
 class ColorMapParameter(SimpleParameter):
-    itemClass = ColorMapParameterItem
+    itemClass: type[ColorMapParameterItem]

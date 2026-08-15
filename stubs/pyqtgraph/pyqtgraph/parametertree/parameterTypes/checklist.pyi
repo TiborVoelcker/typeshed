@@ -31,7 +31,7 @@ class BoolOrRadioParameter(SimpleParameter):
     def itemClass(self): ...
 
 class ChecklistParameter(GroupParameter):
-    itemClass = ChecklistParameterItem
+    itemClass: type[ChecklistParameterItem]
     targetValue: Incomplete
     valChangingProxy: Incomplete
     def __init__(self, **opts) -> None: ...
