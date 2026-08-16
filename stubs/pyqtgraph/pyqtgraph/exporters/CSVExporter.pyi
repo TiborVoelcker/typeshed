@@ -1,16 +1,19 @@
-from _typeshed import Incomplete
+import itertools
+from _typeshed import Incomplete, StrPath
+from typing import ClassVar
 
+from ..parametertree import Parameter
 from .Exporter import Exporter
 
 __all__ = ["CSVExporter"]
 
 class CSVExporter(Exporter):
-    Name: str
-    windows: Incomplete
-    params: Incomplete
-    index_counter: Incomplete
-    header: Incomplete
-    data: Incomplete
+    Name: ClassVar[str]
+    windows: ClassVar[list[Incomplete]]
+    params: Parameter
+    index_counter: itertools.count[int]
+    header: list[str]
+    data: list[tuple[Incomplete, ...]]
     def __init__(self, item) -> None: ...
-    def parameters(self): ...
-    def export(self, fileName=None) -> None: ...  # type: ignore[override]
+    def parameters(self) -> Parameter: ...
+    def export(self, fileName: StrPath | None = None) -> None: ...  # type: ignore[override]
