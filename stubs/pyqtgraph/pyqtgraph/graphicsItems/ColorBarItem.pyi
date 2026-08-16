@@ -10,7 +10,7 @@ from .AxisItem import AxisItem
 from .ImageItem import ImageItem
 from .LinearRegionItem import LinearRegionItem
 from .PColorMeshItem import PColorMeshItem
-from .PlotItem import PlotItem
+from .PlotItem.PlotItem import PlotItem
 
 __all__ = ["ColorBarItem"]
 
