@@ -1,9 +1,9 @@
 from _typeshed import Incomplete
 
 class GarbageCollector:
-    debug: Incomplete
+    debug: bool
     timer: Incomplete
-    threshold: Incomplete
+    threshold: tuple[int, int, int]
     def __init__(self, interval: float = 1.0, debug: bool = False) -> None: ...
     def check(self) -> None: ...
     def debug_cycles(self) -> None: ...
