@@ -8,7 +8,7 @@ from typing import Any, Literal
 import numpy as np
 from numpy.typing import NDArray
 
-from .Qt import QtGui  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import QtGui
 
 class Transform3D(QtGui.QMatrix4x4):
     # Either 16 numbers, a single 4x4 nested sequence/array, or a QMatrix4x4.

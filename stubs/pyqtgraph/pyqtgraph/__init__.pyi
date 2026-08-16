@@ -3,6 +3,7 @@ from typing import Literal, NoReturn
 from typing_extensions import TypeAlias
 
 from .colormap import *
+from .colors import palette as palette
 from .functions import *
 from .graphicsItems.ArrowItem import *
 from .graphicsItems.AxisItem import *
@@ -47,9 +48,13 @@ from .GraphicsScene import GraphicsScene as GraphicsScene
 from .imageview import *
 from .metaarray import MetaArray as MetaArray
 from .Point import Point as Point
-from .Qt import (  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import (
     QtCore as QtCore,
+    QtGui as QtGui,
+    QtWidgets as QtWidgets,
+    exec_,
     isQObjectAlive as isQObjectAlive,
+    mkQApp as mkQApp,
 )
 from .SignalProxy import *
 from .SRTTransform import SRTTransform as SRTTransform
@@ -123,6 +128,9 @@ def renamePyc(startDir: StrPath) -> None: ...  # undocumented
 path: str  # undocumented
 
 def cleanup() -> None: ...  # undocumented
+
+exec = exec_
+
 def exit() -> NoReturn: ...
 
 plots: list[PlotWidget]  # undocumented

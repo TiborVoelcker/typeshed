@@ -10,7 +10,7 @@ from typing_extensions import Self, TypeAlias
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from .Qt import QtGui  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import QtGui
 
 __all__ = [
     "siScale",

@@ -1,31 +1,56 @@
 # Notes on the pyqtgraph stubs
 
-## `pyqtgraph.Qt` is not stubbed here
+## `pyqtgraph.Qt` is stubbed as an incomplete module
 
 `pyqtgraph.Qt` is a compatibility shim that re-exports whichever of PyQt5,
 PyQt6, PySide2 or PySide6 is installed. The runtime modules
-(`pyqtgraph/Qt/QtCore/__init__.py` and friends) are empty and are populated
-dynamically at import time, and pyqtgraph ships its own inline `.pyi` files
-for them. Those inline stubs are part of the wheel, so typeshed deliberately
-does not stub `pyqtgraph.Qt`: doing so would shadow annotations that are both
-more accurate and kept in sync with the Qt binding the user actually has
-installed.
+(`pyqtgraph/Qt/QtCore/__init__.py` and friends) are empty files that
+`pyqtgraph/Qt/__init__.py` populates at import time.
 
-This is why `stubs/pyqtgraph` is marked `partial_stub = true` — type checkers
-merge these stubs with the installed package and pick up `pyqtgraph/Qt/*.pyi`
-from there.
-
-The consequence is that, inside typeshed's own CI, `pyqtgraph.Qt` (and the
-optional `OpenGL` and `jupyter_rfb` dependencies) cannot be resolved. Imports
-of them therefore carry
+typeshed cannot depend on a Qt binding, so the Qt classes themselves are not
+typed here. `pyqtgraph/Qt/__init__.pyi` declares the names pyqtgraph itself
+defines (`QT_LIB`, `mkQApp`, `exec_`, `isQObjectAlive`, ...) and every module
+under `pyqtgraph/Qt/` ends in
 
 ```python
-# type: ignore[import-not-found]  # pyright: ignore[reportMissingImports]
+def __getattr__(name: str): ...  # incomplete module
 ```
 
-and modules that subclass a Qt class carry a file-level
-`# pyright: reportUntypedBaseClass=false`. In a real environment, where
-pyqtgraph and a Qt binding are installed, all of these resolve normally.
+so that `QtWidgets.QWidget` and friends resolve to `Any` instead of erroring.
+This follows the same convention typeshed uses for other partially-covered
+modules (`stdlib/encodings`, `stubs/tensorflow`, `stubs/Pygments`).
+
+### Why not leave `pyqtgraph.Qt` out entirely?
+
+pyqtgraph does ship inline `.pyi` files for `pyqtgraph/Qt/`, so it is tempting
+to omit the subpackage and let PEP 561's partial-stub fallback pick them up.
+That does not work, and produces false positives in user code:
+
+* pyqtgraph ships no `py.typed` marker, so it is not an inline package. The
+  typing spec has type checkers fall back to *inline packages* for modules
+  missing from a partial stub package, and mypy therefore reports
+  `import-untyped` on `import pyqtgraph.Qt.QtCore` and never reads those
+  `.pyi` files.
+* pyright reads them, but then reports
+  `"QWidget" is not a known attribute of module "pyqtgraph.Qt.QtWidgets"`,
+  because the upstream stubs star-import all four bindings and none of them
+  resolve for a given user.
+
+Both were verified against mypy and pyright with the stub package installed.
+Since typeshed prefers false negatives over false positives, the subpackage is
+stubbed here rather than omitted.
+
+`stubs/pyqtgraph` is still marked `partial_stub = true` for the parts listed
+below that have no stubs at all.
+
+Modules that subclass a Qt class carry a file-level
+`# pyright: reportUntypedBaseClass=false`, since their base class is `Any`.
+The optional `OpenGL` and `jupyter_rfb` imports, which typeshed also cannot
+resolve, carry
+
+```python
+# type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+```
 
 ## What is intentionally left out
 
@@ -43,5 +68,4 @@ guidance, the following parts of the source distribution have no stubs:
   `pyqtgraph.util.numba_helper` — private acceleration backends chosen at
   runtime.
 * `pyqtgraph.frozenSupport` — py2exe/cx_freeze helper.
-* `pyqtgraph.colors.palette` — internal data behind `pyqtgraph.setPalette()`.
 * `pyqtgraph.PlotData` — dead code, not imported anywhere in the package.

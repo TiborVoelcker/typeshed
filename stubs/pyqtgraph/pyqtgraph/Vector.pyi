@@ -6,7 +6,7 @@ from collections.abc import Iterator, Sequence
 from typing import Literal
 from typing_extensions import TypeAlias
 
-from .Qt import QT_LIB as QT_LIB, QtGui  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import QT_LIB as QT_LIB, QtGui
 
 # Anything `Vector()` accepts: two or three numbers, a length-2/3 sequence, or a
 # QVector3D / QPoint / QPointF / QSizeF (`Incomplete`, since `pyqtgraph.Qt` is

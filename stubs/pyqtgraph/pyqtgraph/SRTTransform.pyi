@@ -9,7 +9,7 @@ import numpy as np
 from numpy.typing import NDArray
 
 from .Point import Point
-from .Qt import QtGui  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import QtGui
 
 class _SRTState(TypedDict):
     pos: tuple[float, float]

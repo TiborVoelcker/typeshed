@@ -6,7 +6,7 @@ from collections.abc import Iterator, Sequence
 from typing import Literal
 from typing_extensions import Self, TypeAlias
 
-from .Qt import QtCore  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from .Qt import QtCore
 
 # Anything `Point()` accepts: a scalar, a length-2 sequence, or a QPointF /
 # QPoint / QSize / QSizeF (`Incomplete`, since `pyqtgraph.Qt` is not stubbed).

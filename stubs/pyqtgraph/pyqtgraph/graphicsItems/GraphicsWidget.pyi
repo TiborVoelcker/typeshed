@@ -1,7 +1,7 @@
 # Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
 # pyright: reportUntypedBaseClass=false
 
-from ..Qt import QtWidgets  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
+from ..Qt import QtWidgets
 from .GraphicsItem import GraphicsItem
 
 __all__ = ["GraphicsWidget"]
