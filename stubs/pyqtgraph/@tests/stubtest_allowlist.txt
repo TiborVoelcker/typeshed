@@ -525,7 +525,8 @@ pyqtgraph.widgets.PlotWidget.PlotWidget.unregister
 # `AxisItem.scale` is `QGraphicsItem.scale`, `AxisItem.style` is
 # `QGraphicsWidget.style`, `LegendItem.size` is `QGraphicsWidget.size`,
 # `ScatterPlotItem.data` is `QGraphicsItem.data`, `TableWidget.items` is
-# `QTableWidget.items`, and each is assigned a value in `__init__`.
+# `QTableWidget.items`, `ScatterPlotWidget.style` is `QWidget.style`, and each is
+# assigned a value in `__init__`.
 pyqtgraph.AxisItem.scale
 pyqtgraph.AxisItem.style
 pyqtgraph.graphicsItems.AxisItem.AxisItem.style
@@ -536,6 +537,8 @@ pyqtgraph.ScatterPlotItem.data
 pyqtgraph.graphicsItems.ScatterPlotItem.ScatterPlotItem.data
 pyqtgraph.TableWidget.items
 pyqtgraph.widgets.TableWidget.TableWidget.items
+pyqtgraph.ScatterPlotWidget.style
+pyqtgraph.widgets.ScatterPlotWidget.ScatterPlotWidget.style
 
 # Wrapped by the private `ComboBox.ignoreIndexChange` decorator, which passes
 # through `(*args, **kwds)`. The stub records the real signature instead.
