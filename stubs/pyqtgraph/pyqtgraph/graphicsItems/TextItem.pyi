@@ -1,15 +1,11 @@
 from _typeshed import Incomplete
 from collections.abc import Sequence
-from typing_extensions import TypeAlias
 
 from ..functions import _BrushArg, _ColorArg, _PenArg
-from ..Point import Point
+from ..Point import Point, _PointLike
 from .GraphicsObject import GraphicsObject
 
 __all__ = ["TextItem"]
-
-# A QPointF/QPoint or an (x, y) sequence.
-_PointLike: TypeAlias = Sequence[float] | Incomplete
 
 class TextItem(GraphicsObject):
     anchor: Point

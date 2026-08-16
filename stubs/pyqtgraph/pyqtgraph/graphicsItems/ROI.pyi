@@ -4,13 +4,12 @@
 from _typeshed import Incomplete
 from collections.abc import Sequence
 from typing import Any, Literal, TypedDict
-from typing_extensions import TypeAlias
 
 import numpy as np
 from numpy.typing import NDArray
 
 from ..functions import _PenArg
-from ..Point import Point
+from ..Point import Point, _PointLike
 from ..Qt import QtWidgets
 from .GraphicsObject import GraphicsObject
 from .UIGraphicsItem import UIGraphicsItem
@@ -29,9 +28,6 @@ __all__ = [
     "CrosshairROI",
     "TriangleROI",
 ]
-
-# A QPointF/QPoint, a `Point`, or an (x, y) sequence.
-_PointLike: TypeAlias = Sequence[float] | Point | Incomplete
 
 class _ROIState(TypedDict):
     pos: Point
