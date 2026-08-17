@@ -52,6 +52,15 @@ resolve, carry
 # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 ```
 
+## Undocumented subpackages
+
+`pyqtgraph.canvas`, `pyqtgraph.multiprocess`, `pyqtgraph.metaarray` and
+`pyqtgraph.console`'s internals have no upstream API documentation. They are
+stubbed anyway — they are importable, non-underscore, and used in practice —
+but their contents are annotated from the implementation alone. Individual
+`# undocumented` markers are not used inside them, since that would mean
+marking every single object; treat the whole subpackage as undocumented.
+
 ## What is intentionally left out
 
 Following typeshed's [what to include](../../CONTRIBUTING.md#what-to-include)
