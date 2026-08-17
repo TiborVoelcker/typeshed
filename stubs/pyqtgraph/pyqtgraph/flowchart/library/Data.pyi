@@ -5,15 +5,13 @@ from _typeshed import Incomplete
 from collections.abc import Callable, Mapping
 from typing import Any, ClassVar
 
-from numpy.typing import NDArray
-
 from ...graphicsItems.LinearRegionItem import LinearRegionItem
-from ...metaarray import MetaArray
 from ...Qt import QtWidgets
 from ...widgets.TreeWidget import TreeWidget
 from ..Node import Node
 from ..Terminal import Terminal
 from .common import CtrlNode
+from .functions import _ArrayOrMeta
 
 class ColumnSelectNode(Node):
     nodeName: ClassVar[str]
@@ -23,9 +21,9 @@ class ColumnSelectNode(Node):
     axis: int | str
     def __init__(self, name: str) -> None: ...
     # Returns one entry per selected column.
-    def process(self, In: NDArray[Any] | MetaArray, display: bool = True) -> dict[str, Any]: ...  # type: ignore[override]
+    def process(self, In: _ArrayOrMeta, display: bool = True) -> dict[str, Any]: ...  # type: ignore[override]
     def ctrlWidget(self): ...
-    def updateList(self, data: NDArray[Any] | MetaArray) -> None: ...
+    def updateList(self, data: _ArrayOrMeta) -> None: ...
     def itemChanged(self, item) -> None: ...  # `item` is a QListWidgetItem
     def saveState(self) -> dict[str, Any]: ...
     def restoreState(self, state: Mapping[str, Any]) -> None: ...
@@ -82,22 +80,22 @@ class ColumnJoinNode(Node):
 class Mean(CtrlNode):
     nodeName: ClassVar[str]
     uiTemplate: Incomplete
-    def processData(self, data: NDArray[Any] | MetaArray): ...
+    def processData(self, data: _ArrayOrMeta): ...
 
 class Max(CtrlNode):
     nodeName: ClassVar[str]
     uiTemplate: Incomplete
-    def processData(self, data: NDArray[Any] | MetaArray): ...
+    def processData(self, data: _ArrayOrMeta): ...
 
 class Min(CtrlNode):
     nodeName: ClassVar[str]
     uiTemplate: Incomplete
-    def processData(self, data: NDArray[Any] | MetaArray): ...
+    def processData(self, data: _ArrayOrMeta): ...
 
 class Stdev(CtrlNode):
     nodeName: ClassVar[str]
     uiTemplate: Incomplete
-    def processData(self, data: NDArray[Any] | MetaArray): ...
+    def processData(self, data: _ArrayOrMeta): ...
 
 class Index(CtrlNode):
     nodeName: ClassVar[str]
@@ -114,4 +112,4 @@ class Slice(CtrlNode):
 class AsType(CtrlNode):
     nodeName: ClassVar[str]
     uiTemplate: Incomplete
-    def processData(self, data: NDArray[Any] | MetaArray): ...
+    def processData(self, data: _ArrayOrMeta): ...
