@@ -1,6 +1,0 @@
-from _typeshed import Incomplete
-
-app: Incomplete
-
-def runStage(i) -> None: ...
-def runManyStages(i) -> None: ...

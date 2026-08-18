@@ -1,2 +1,15 @@
 version = "0.13.*"
 upstream_repository = "https://github.com/pyqtgraph/pyqtgraph"
+# Requires a version of numpy with a `py.typed` file
+requires = ["numpy>=1.22"]
+# The non-public API (examples, generated Qt Designer templates, vendored
+# colorama, ...) is deliberately left unstubbed. See README.md.
+partial_stub = true
+
+[tool.stubtest]
+ignore_missing_stub = true
+# pyqtgraph needs one of PyQt5/PyQt6/PySide2/PySide6 to be importable. The rest
+# are optional dependencies, without which whole modules fail to import:
+# PyOpenGL for `pyqtgraph.opengl`, matplotlib for the matplotlib exporter and
+# widget, and jupyter_rfb for `pyqtgraph.jupyter`.
+stubtest_requirements = ["PyQt6", "PyOpenGL", "matplotlib", "jupyter_rfb"]

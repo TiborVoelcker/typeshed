@@ -77,6 +77,7 @@
         "stubs/pycurl",
         "stubs/Pygments",
         "stubs/PyMySQL",
+        "stubs/pyqtgraph",
         "stubs/python-dateutil",
         "stubs/python-jose",
         "stubs/pytz/pytz/lazy.pyi",

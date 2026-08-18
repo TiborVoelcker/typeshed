@@ -1,6 +1,6 @@
 from _typeshed import Incomplete
 
-from . import internals as internals
+from . import QtCore as QtCore, QtGui as QtGui, QtWidgets as QtWidgets
 
 PYSIDE: str
 PYSIDE2: str
@@ -8,42 +8,24 @@ PYSIDE6: str
 PYQT4: str
 PYQT5: str
 PYQT6: str
-QT_LIB: Incomplete
-libOrder: Incomplete
-QT_LIB = lib
-qt: Incomplete
-QT_LIB = lib
 
-class FailedImport:
-    err: Incomplete
-    def __init__(self, err) -> None: ...
-    def __getattr__(self, attr) -> None: ...
-
-class _StringIO:
-    data: Incomplete
-    def __init__(self) -> None: ...
-    def write(self, data) -> None: ...
-    def getvalue(self): ...
-
-VERSION_INFO: Incomplete
-module: Incomplete
-module_whitelist: Incomplete
-attr: Incomplete
-QtVersion: Incomplete
-loadUiType: Incomplete
-isQObjectAlive: Incomplete
-
-@staticmethod
-def qWait(msec) -> None: ...
-
-sys_excepthook: Incomplete
-
-def pyqt_qabort_override(*args, **kwds): ...
-
-versionReq: Incomplete
-m: Incomplete
+QT_LIB: str
+QtVersion: str
+VERSION_INFO: str
+# Set by `mkQApp`; `QAPP` is the older spelling kept for backwards compatibility.
 App: Incomplete
 QAPP: Incomplete
 
-def mkQApp(name=None): ...
+class FailedImport:  # undocumented
+    err: BaseException
+    def __init__(self, err: BaseException) -> None: ...
+    def __getattr__(self, attr: str): ...
+
 def exec_(): ...
+def mkQApp(name: str | None = None): ...
+def isQObjectAlive(obj) -> bool: ...
+
+# The remaining names are injected at import time and are not importable
+# submodules: `QtSvg`, `QtTest`, `QtOpenGLWidgets`, `loadUiType`, `sip`, ...
+# See the note in `QtCore/__init__.pyi`.
+def __getattr__(name: str): ...  # incomplete module

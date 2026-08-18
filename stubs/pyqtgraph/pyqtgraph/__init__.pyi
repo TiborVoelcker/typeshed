@@ -1,6 +1,9 @@
-from _typeshed import Incomplete
+from _typeshed import Incomplete, StrPath
+from typing import Literal, NoReturn
+from typing_extensions import TypeAlias
 
 from .colormap import *
+from .colors import palette as palette
 from .functions import *
 from .graphicsItems.ArrowItem import *
 from .graphicsItems.AxisItem import *
@@ -45,7 +48,14 @@ from .GraphicsScene import GraphicsScene as GraphicsScene
 from .imageview import *
 from .metaarray import MetaArray as MetaArray
 from .Point import Point as Point
-from .Qt import QtCore as QtCore, isQObjectAlive as isQObjectAlive
+from .Qt import (
+    QtCore as QtCore,
+    QtGui as QtGui,
+    QtWidgets as QtWidgets,
+    exec_,
+    isQObjectAlive as isQObjectAlive,
+    mkQApp as mkQApp,
+)
 from .SignalProxy import *
 from .SRTTransform import SRTTransform as SRTTransform
 from .SRTTransform3D import SRTTransform3D as SRTTransform3D
@@ -87,28 +97,52 @@ from .widgets.VerticalLabel import *
 
 __version__: str
 useOpenGL: bool
-CONFIG_OPTIONS: Incomplete
 
-def setConfigOption(opt, value) -> None: ...
-def setConfigOptions(**opts) -> None: ...
-def getConfigOption(opt): ...
+# The keys accepted by `setConfigOption`/`getConfigOption`; see
+# https://pyqtgraph.readthedocs.io/en/latest/api_reference/config_options.html
+_ConfigOption: TypeAlias = Literal[
+    "useOpenGL",
+    "leftButtonPan",
+    "foreground",
+    "background",
+    "antialias",
+    "editorCommand",
+    "exitCleanup",
+    "enableExperimental",
+    "crashWarning",
+    "mouseRateLimit",
+    "imageAxisOrder",
+    "useCupy",
+    "useNumba",
+    "segmentedLineMode",
+]
+
+CONFIG_OPTIONS: dict[str, Incomplete]
+
+def setConfigOption(opt: _ConfigOption, value: object) -> None: ...
+def setConfigOptions(**opts: object) -> None: ...
+def getConfigOption(opt: _ConfigOption): ...
 def systemInfo() -> None: ...
-def renamePyc(startDir) -> None: ...
+def renamePyc(startDir: StrPath) -> None: ...  # undocumented
 
-path: Incomplete
+path: str  # undocumented
 
-def cleanup() -> None: ...
-def exit() -> None: ...
+def cleanup() -> None: ...  # undocumented
 
-plots: Incomplete
-images: Incomplete
-QAPP: Incomplete
+exec = exec_
 
-def plot(*args, **kargs): ...
-def image(*args, **kargs): ...
+def exit() -> NoReturn: ...
+
+plots: list[PlotWidget]  # undocumented
+images: list[ImageView]  # undocumented
+consoles: list[Incomplete]  # undocumented
+QAPP: Incomplete  # undocumented
+
+def plot(*args, **kargs) -> PlotWidget: ...
+def image(*args, **kargs) -> ImageView: ...
 
 show = image
 
 def dbg(*args, **kwds): ...
 def stack(*args, **kwds): ...
-def setPalette(app, style) -> None: ...
+def setPalette(app, style: str | Incomplete) -> None: ...  # undocumented

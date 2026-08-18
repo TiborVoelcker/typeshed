@@ -1,27 +1,35 @@
-from _typeshed import Incomplete
+# Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
+# pyright: reportUntypedBaseClass=false
 
-from OpenGL.GL import *
+from _typeshed import Incomplete
+from typing import Any
+
+import numpy as np
+from numpy.typing import NDArray
+from OpenGL.GL import *  # type: ignore[import-not-found, import-untyped]  # pyright: ignore[reportMissingImports]
 
 from ..Qt import QtWidgets
 
 __all__ = ["RawImageWidget", "RawImageGLWidget"]
 
 class RawImageWidget(QtWidgets.QWidget):
-    scaled: Incomplete
-    opts: Incomplete
-    image: Incomplete
+    scaled: bool
+    # the `(img, args, kargs)` passed to the last `setImage` call
+    opts: tuple[Any, ...] | None
+    image: Incomplete  # QImage
     def __init__(self, parent=None, scaled: bool = False) -> None: ...
-    def setImage(self, img, *args, **kargs) -> None: ...
+    # `img` has shape (x, y), (x, y, 3) or (x, y, 4); the extra arguments go to `functions.makeARGB`
+    def setImage(self, img: NDArray[Any], *args, **kargs) -> None: ...
     def paintEvent(self, ev) -> None: ...
 
-class RawImageGLWidget(QOpenGLWidget):
-    scaled: Incomplete
-    image: Incomplete
+class RawImageGLWidget(QtWidgets.QOpenGLWidget):
+    scaled: bool
+    image: NDArray[np.ubyte] | None
     uploaded: bool
     smooth: bool
-    opts: Incomplete
+    opts: tuple[Any, ...] | None
     def __init__(self, parent=None, scaled: bool = False) -> None: ...
-    def setImage(self, img, *args, **kargs) -> None: ...
+    def setImage(self, img: NDArray[Any], *args, **kargs) -> None: ...
     texture: Incomplete
     def initializeGL(self) -> None: ...
     def uploadTexture(self) -> None: ...

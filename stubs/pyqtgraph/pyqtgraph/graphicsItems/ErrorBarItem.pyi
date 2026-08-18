@@ -5,7 +5,8 @@ from .GraphicsObject import GraphicsObject
 __all__ = ["ErrorBarItem"]
 
 class ErrorBarItem(GraphicsObject):
-    opts: Incomplete
+    opts: dict[str, Incomplete]
+    # Accepts x, y, height, width, top, bottom, left, right, beam, pen.
     def __init__(self, **opts) -> None: ...
     path: Incomplete
     def setData(self, **opts) -> None: ...
