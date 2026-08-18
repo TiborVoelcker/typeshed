@@ -3,24 +3,27 @@
 
 from _typeshed import Incomplete
 from collections.abc import Mapping, Sequence
+from typing import ClassVar
+from weakref import WeakKeyDictionary
 
 from .Qt import QtCore
 
 __all__ = ["WidgetGroup"]
 
 class WidgetGroup(QtCore.QObject):
-    classes: dict[Incomplete, tuple[Incomplete, ...]]
+    # Maps a widget class to `(change signal, getter, setter[, auto-add children])`.
+    classes: ClassVar[dict[Incomplete, tuple[Incomplete, ...]]]
     sigChanged: Incomplete
-    widgetList: dict[Incomplete, str]
-    scales: dict[Incomplete, float]
-    cache: dict[str, Incomplete]
-    uncachedWidgets: dict[Incomplete, None]
-    # A list of widgets, a list of `(widget, name)` pairs, or a QWidget whose
-    # children are added automatically.
-    def __init__(self, widgetList: Sequence[Incomplete] | Incomplete | None = None) -> None: ...
+    widgetList: WeakKeyDictionary[Incomplete, str]  # maps {widget: name}
+    scales: WeakKeyDictionary[Incomplete, float | None]
+    cache: dict[str, Incomplete]  # maps {name: value}
+    uncachedWidgets: WeakKeyDictionary[Incomplete, None]
+    # A list of `(widget, [name], [scale])` specifications, a `{name: widget}` dict, or a
+    # QObject whose compatible children are added recursively.
+    def __init__(self, widgetList: Sequence[Incomplete] | Mapping[str, Incomplete] | Incomplete | None = None) -> None: ...
     def addWidget(self, w, name: str | None = None, scale: float | None = None) -> None: ...
     def findWidget(self, name: str): ...
-    def interface(self, obj): ...
+    def interface(self, obj) -> tuple[Incomplete, ...]: ...
     def checkForChildren(self, obj) -> bool: ...
     def autoAdd(self, obj) -> None: ...
     def acceptsType(self, obj) -> bool: ...
