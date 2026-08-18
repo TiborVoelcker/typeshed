@@ -3,19 +3,21 @@
 
 from _typeshed import Incomplete
 
+from ..exporters.Exporter import Exporter
 from ..Qt import QtWidgets
+from .GraphicsScene import GraphicsScene
 
 class FormatExportListWidgetItem(QtWidgets.QListWidgetItem):
-    expClass: Incomplete
-    def __init__(self, expClass, *args, **kwargs) -> None: ...
+    expClass: type[Exporter]
+    def __init__(self, expClass: type[Exporter], *args, **kwargs) -> None: ...
 
 class ExportDialog(QtWidgets.QWidget):
     shown: bool
-    currentExporter: Incomplete
-    scene: Incomplete
-    selectBox: Incomplete
-    ui: Incomplete
-    def __init__(self, scene) -> None: ...
+    currentExporter: Exporter | None
+    scene: GraphicsScene
+    selectBox: Incomplete  # QtWidgets.QGraphicsRectItem
+    ui: Incomplete  # exportDialogTemplate_generic.Ui_Form
+    def __init__(self, scene: GraphicsScene) -> None: ...
     def show(self, item=None) -> None: ...
     def updateItemList(self, select=None) -> None: ...
     def updateItemTree(self, item, treeItem, select=None) -> None: ...
