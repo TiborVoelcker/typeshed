@@ -4,10 +4,11 @@
 import enum
 import mmap
 from _typeshed import Incomplete
+from tempfile import _TemporaryFileWrapper
 from typing import IO
 
 from ..multiprocess.processes import QtProcess
-from ..multiprocess.remoteproxy import ObjectProxy
+from ..multiprocess.remoteproxy import DeferredObjectProxy, ObjectProxy
 from ..Qt import QtCore, QtGui, QtWidgets
 from .GraphicsView import GraphicsView
 
@@ -53,6 +54,9 @@ class RemoteGraphicsView(QtWidgets.QWidget):
     pg: ObjectProxy
     shm: mmap.mmap | None
     shmFile: IO[bytes]
+    # bound in `__init__` to the matching method of the remote `Renderer`
+    scene: DeferredObjectProxy
+    setCentralItem: DeferredObjectProxy
     # `useOpenGL` and `background` are passed to the remote `GraphicsView`, every
     # other keyword to `multiprocess.QtProcess`
     def __init__(self, parent=None, *args, **kwds) -> None: ...
@@ -73,7 +77,7 @@ class RemoteGraphicsView(QtWidgets.QWidget):
 # Created by the remote process to handle render requests.
 class Renderer(GraphicsView):
     sceneRendered: Incomplete
-    shmFile: IO[bytes]
+    shmFile: _TemporaryFileWrapper[bytes]
     shm: mmap.mmap
     img: Incomplete  # QImage
     renderTimer: Incomplete

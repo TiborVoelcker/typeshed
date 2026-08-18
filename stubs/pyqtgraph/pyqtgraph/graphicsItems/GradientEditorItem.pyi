@@ -1,6 +1,7 @@
 # Qt base classes come from `pyqtgraph.Qt`, which typeshed cannot resolve; see README.md.
 # pyright: reportUntypedBaseClass=false
 
+import weakref
 from _typeshed import Incomplete
 from collections.abc import Callable, Sequence
 from typing import Any, Literal, TypeVar
@@ -12,6 +13,7 @@ from numpy.typing import NDArray
 from ..colormap import ColorMap
 from ..functions import _ColorArg, _PenArg
 from ..Qt import QtWidgets
+from ..widgets.SpinBox import SpinBox
 from .GradientPresets import _GradientPreset
 from .GraphicsWidget import GraphicsWidget
 
@@ -122,6 +124,8 @@ class Tick(QtWidgets.QGraphicsWidget):
     currentPen: Incomplete
     removeAllowed: bool
     pg: Incomplete
+    # Set by `GradientEditorItem.addTick`, not by `Tick.__init__`.
+    colorChangeAllowed: bool
     def __init__(
         self,
         pos: Sequence[float],
@@ -141,9 +145,9 @@ class Tick(QtWidgets.QGraphicsWidget):
     def hoverEvent(self, ev) -> None: ...
 
 class TickMenu(QtWidgets.QMenu):
-    tick: Incomplete
-    sliderItem: Incomplete
+    tick: weakref.ref[Tick]
+    sliderItem: weakref.ref[TickSliderItem]
     removeAct: Incomplete
-    fracPosSpin: Incomplete
+    fracPosSpin: SpinBox
     def __init__(self, tick: Tick, sliderItem: TickSliderItem) -> None: ...
     def fractionalValueChanged(self, x) -> None: ...
