@@ -22,6 +22,8 @@ class AxisItem(GraphicsWidget):
     labelUnitPrefix: str
     labelStyle: dict[str, Incomplete]
     logMode: bool
+    # Declared `float` because that is the intended type; note `setScale(None)`
+    # stores `None` unguarded, which then breaks `updateAutoSIPrefix`.
     scale: float
     autoSIPrefix: bool
     autoSIPrefixScale: float
